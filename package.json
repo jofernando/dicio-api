@@ -6,7 +6,7 @@
   "repository": "https://github.com/ThiagoNelsi/dicio-api.git",
   "author": "Thiago Nelsi do Couto <thiagonelsi@gmail.com>",
   "license": "MIT",
-  "private": true,
+  "private": false,
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.js"
