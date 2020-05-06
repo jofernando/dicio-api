@@ -1,4 +1,4 @@
-<h1 align="center">DOCS</h1>
+# DOCS
 
 #### Response Params
 ```
