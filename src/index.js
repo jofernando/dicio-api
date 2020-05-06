@@ -27,4 +27,4 @@ app.get('/:word', async (req, res) => {
 
 });
 
-app.listen(3333);
+app.listen(3333 || process.env.PORT);
