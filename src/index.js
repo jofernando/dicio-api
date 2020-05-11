@@ -7,10 +7,11 @@ const app = express();
 app.get('/:word', async (req, res) => {
 
   const { word } = req.params;
+  const sanitizedWord = sanitizeWord(word)
 
   try {
 
-    const { data: dicioHTML } = await axios.get(`https://dicio.com.br/${word}`);
+    const { data: dicioHTML } = await axios.get(`https://dicio.com.br/${sanitizedWord}`);
 
     const $ = cheerio.load(dicioHTML);
 
@@ -65,6 +66,24 @@ app.get('/:word', async (req, res) => {
   }
 
 });
+
+function sanitizeWord(word) {
+  const wordLowerCased = word.toLowerCase()
+  const wordWithoutSpaces = wordLowerCased.trim();
+  const wordWithoutEspecialCharacters = wordWithoutSpaces.replace('ç', 'c')
+    .replace('á', 'a')
+    .replace('é', 'e')
+    .replace('í', 'i')
+    .replace('ó', 'o')
+    .replace('ú', 'u')
+    .replace('ã', 'a')
+    .replace('õ', 'o')
+    .replace('â', 'a')
+    .replace('ê', 'e')
+    .replace('ô', 'o')
+
+  return wordWithoutEspecialCharacters;
+}
 
 
 app.listen(process.env.PORT || 3333);

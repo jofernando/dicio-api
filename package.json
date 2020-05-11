@@ -1,6 +1,6 @@
 {
   "name": "dicio-api",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Rest API of Portuguese (pt-br) dictionary",
   "main": "index.js",
   "repository": "https://github.com/ThiagoNelsi/dicio-api.git",
