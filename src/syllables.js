@@ -14,7 +14,7 @@ module.exports = async (req, res) => {
     const $ = cheerio.load(dicioHTML);
 
     const additionalText = $('.adicional').text();
-    const syllabicMatches = additionalText.match(/(?<=silábica: ).+\b/i);
+    const syllabicMatches = additionalText.match(/(?<=silábica: ).+(\n|$)/i);
     if (!syllabicMatches)
       throw `Could not parse silabic matches from "${additionalText}"`;
 
