@@ -19,7 +19,7 @@ module.exports = async (req, res) => {
       throw `Could not parse silabic matches from "${additionalText}"`;
 
     const syllablesInfo = {
-    syllablesText: syllabicMatches[0],
+    syllablesText: syllabicMatches[0].trim(),
     syllablesCount: syllabicMatches[0].split('-').length
     }
 
