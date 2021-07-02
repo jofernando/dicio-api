@@ -14,12 +14,21 @@ module.exports = async (req, res) => {
     const $ = cheerio.load(dicioHTML);
 
     const synonyms = [];
-    $('a', '.sinonimos').each((_, element) => {
 
-      const text = $(element).text();
+    $('.sinonimos').each((_, children) => {
 
-      if (text)
-        synonyms.push(text)
+      if ($(children).text().includes("é sinônimo de:")) {
+
+        $('a', children).each((_, element) => {
+
+          const text = $(element).text();
+
+          if (text) synonyms.push(text)
+
+        });
+
+      }
+
     });
 
     res.json(synonyms);
