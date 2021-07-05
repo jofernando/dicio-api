@@ -1,9 +1,20 @@
-# DOCS
+# API DOCS 📚🔎
 
-### Response Params
+O Dicio API permite buscas por diversas informações a respeito de milhares de palavras da língua portuguesa, todos os dados são extraídos do [Dicio](https://dicio.com.br).  
+Nesta versão é possível acessar os seguintes recursos:
 
-#### meanings:  
-```
+> - SIGNIFICADO
+> - SINÔNIMOS
+> - SEPARAÇÃO SILÁBICA
+> - EXEMPLOS DE FRASES
+
+<br />
+
+### Endpoints e Response Params
+
+##### Significados: GET `/[word]` ou `/meanings/[word]`:   
+Response:
+```js
 [
   {
     class: String,
@@ -13,41 +24,65 @@
 ]
 ```
 
-#### synonyms:
-```
+<br />
+
+##### Sinônimos: GET `/synonyms/[word]`:   
+Response:
+```js
 [
-'synonym1',
-'synonym2',
-...
+  String,
+  String,
+  String,
+  ...
 ]
 ```
-#### syllables:
-```
+
+<br />
+
+##### Separação silábica: GET `/syllables/[word]`:   
+Response:
+```js
 {
   syllablesText: String,
   syllablesCount: Number
 }
 ```
 
-#### Usando a palavra `livro` como exemplo:
+<br />
+
+##### Exemplos em frases: GET `/sentences/[word]`:   
+Response:
+```js
+[
+  {
+    sentence: String,
+    author: String
+  },
+  {
+    sentence: String,
+    author: String
+  }
+]
+```
+
+* * *
+
+## Exemplo de uso:
+
+Usando a palavra `livro` 📗 como exemplo, vamos começar buscando seu significado:
 
 ### Request URL
 
-Para significados:  
-https://significado.herokuapp.com/meanings/livro  
-ou simplesmente:
 https://significado.herokuapp.com/livro
 
-Outras informações:  
-sinônimos: https://significado.herokuapp.com/synonyms/livro  
-separação silábica: https://significado.herokuapp.com/syllables/livro
+> Significados também podem ser acessados utilizando o endpoint `/meanings/[word]`: https://significado.herokuapp.com/meanings/livro
 
 ### Response
 
-A resposta é um Array de objetos. Cada objeto possui uma `class` (classe gramatical da palavra),
-`meanings` (os significados da palavra) e `etymology` (etimologia da palavra)
+A resposta é um array de objetos. Cada objeto possui uma `class` (classe gramatical da palavra),
+`meanings` (array de strings, com os diversos significados da palavra) e `etymology` (etimologia da palavra)
 
-```
+```js
 [
   {
     "class": "substantivo masculino",
@@ -62,14 +97,16 @@ A resposta é um Array de objetos. Cada objeto possui uma `class` (classe gramat
     "etymology": "Etimologia (origem da palavra livro). Do latim liber.bri."
   }
 ]
-``` 
+```
+
+### Palavras com múltiplas classes gramaticais
 
 Quando uma palavra tem mais de uma classe gramatical e significados diferentes, as classes gramaticais e seus respectivos significados 
 são divididos em outro objeto
 
 **Exemplo com a palavra `auto`**
 
-```
+```js
 [
   {
     "class": "substantivo masculino",
@@ -100,6 +137,54 @@ são divididos em outro objeto
       "Breve momento; instante."
     ],
     "etymology": "Etimologia (origem da palavra auto). De átomo."
+  }
+]
+```
+
+#### Informações adicionais sobre a palavra:
+
+Sinônimos: https://significado.herokuapp.com/synonyms/livro
+
+```js
+[
+  "alfarrábio",
+  "calhamaço",
+  "cartapácio"
+]
+
+```
+
+Separação silábica: https://significado.herokuapp.com/syllables/livro
+
+```js
+{
+  "syllablesText": "li-vro",
+  "syllablesCount": 2
+}
+```
+
+Exemplos de frases: https://significado.herokuapp.com/sentences/livro
+```js
+[
+  {
+    "sentence": "No fim tu hás de ver que as coisas mais leves são as únicas que o vento não conseguiu levar: um estribilho antigo um carinho no momento preciso o folhear de um livro de poemas o cheiro que tinha um dia o próprio vento...",
+    "author": "- Mário Quintana"
+  },
+  {
+    "sentence": "O livro é um mestre que fala mas que não responde.",
+    "author": "- Platão"
+  },
+  {
+    "sentence": "Em 9 de setembro passado, o Tribunal Civil de Lisboa proibiu, em caráter cautelar, a venda do livro.",
+    "author": "Folha de S.Paulo, 11/01/2010"
+  },
+  {
+    "sentence": "O sucesso on-line transformou os posts em livro.",
+    "author": "Folha de S.Paulo, 27/06/2009"
+  },
+  {
+    "sentence": "Veja abaixo trecho do livro com descrição dos melhores locais para visitar na \"cidade maravilhosa\".",
+    "author": "Folha de S.Paulo, 02/10/2009"
   }
 ]
 ```
