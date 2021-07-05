@@ -17,10 +17,12 @@ module.exports = async (req, res) => {
 
     $('.frase').each((_, element) => {
 
+      $('br', element).replaceWith(' ');
+
       const author = $('em', element).remove();
 
       sentences.push({
-        sentence: $(element).text().trim(),
+        sentence: $(element).text().replace(/\n/g, '').trim(),
         author: $(author).text().trim()
       });
 
