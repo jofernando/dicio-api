@@ -5,6 +5,7 @@ const syllables = require('./syllables');
 const sentence = require('./sentences');
 
 const app = express();
+app.disable('x-powered-by');
 
 app.get('/:word', meanings);
 
