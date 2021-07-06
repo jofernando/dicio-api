@@ -1,17 +1,21 @@
 module.exports = (word) => {
   const wordLowerCased = word.toLowerCase()
   const wordWithoutSpaces = wordLowerCased.trim();
-  const wordWithoutEspecialCharacters = wordWithoutSpaces.replace('ç', 'c')
-    .replace('á', 'a')
-    .replace('é', 'e')
-    .replace('í', 'i')
-    .replace('ó', 'o')
-    .replace('ú', 'u')
-    .replace('ã', 'a')
-    .replace('õ', 'o')
-    .replace('â', 'a')
-    .replace('ê', 'e')
-    .replace('ô', 'o')
 
-  return wordWithoutEspecialCharacters;
+  return wordWithoutSpaces
+    .replace(/ç/g, 'c')
+    .replace(/á/g, 'a')
+    .replace(/é/g, 'e')
+    .replace(/í/g, 'i')
+    .replace(/ó/g, 'o')
+    .replace(/ú/g, 'u')
+    .replace(/ã/g, 'a')
+    .replace(/õ/g, 'o')
+    .replace(/â/g, 'a')
+    .replace(/ê/g, 'e')
+    .replace(/ô/g, 'o')
+    .replace(/ü/g, 'u')
+    .replace(/à/g, 'a')
+    .replace(/[^\w\s]/gi, '')
+
 }
