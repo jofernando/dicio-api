@@ -1,5 +1,11 @@
 # API DOCS 📚🔎
 
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=ThiagoNelsi_dicio-api&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=ThiagoNelsi_dicio-api)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=ThiagoNelsi_dicio-api&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=ThiagoNelsi_dicio-api)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=ThiagoNelsi_dicio-api&metric=security_rating)](https://sonarcloud.io/dashboard?id=ThiagoNelsi_dicio-api)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=ThiagoNelsi_dicio-api&metric=code_smells)](https://sonarcloud.io/dashboard?id=ThiagoNelsi_dicio-api)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=ThiagoNelsi_dicio-api&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=ThiagoNelsi_dicio-api)
+
 O Dicio API permite buscas por diversas informações a respeito de milhares de palavras da língua portuguesa, todos os dados são extraídos do [Dicio](https://dicio.com.br).  
 Nesta versão é possível acessar os seguintes recursos:
 
