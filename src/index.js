@@ -1,10 +1,13 @@
 const express = require('express');
+const cors = require('cors');
 const meanings = require('./meanings');
 const synonyms = require('./synonyms');
 const syllables = require('./syllables');
 const sentence = require('./sentences');
 
 const app = express();
+
+app.use(cors());
 app.disable('x-powered-by');
 
 app.get('/:word', meanings);
